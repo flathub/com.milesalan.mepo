@@ -97,7 +97,7 @@ modules:
   - name: Mepo
     buildsystem: simple
     build-commands:
-      - zig build
+      - zig build -Drelease-safe=true
       - install -Dm755 zig-out/bin/* -t /app/bin/
       - install -Dm644 zig-out/share/applications/mepo.desktop -t /app/share/applications/
       - install -Dm644 zig-out/share/pixmaps/mepo.png -t /app/share/pixmaps/
