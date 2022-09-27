@@ -85,6 +85,7 @@ modules:
       - install -Dm644 zig-out/share/icons/hicolor/512x512/apps/mepo.png /app/share/icons/hicolor/512x512/apps/mepo.png
       - mkdir -p /app/share/metainfo/
       - install -Dm644 com.milesalan.mepo.metainfo.xml /app/share/metainfo/com.milesalan.mepo.metainfo.xml
+      - gzip /app/share/metainfo/com.milesalan.mepo.metainfo.xml
     sources:
       - type: git
         url: https://git.sr.ht/~mil/mepo
