@@ -1,8 +1,7 @@
-# Flatpak Manifest
-app-id: com.milesalan.mepo
-runtime: org.freedesktop.Platform
-runtime-version: '21.08'
-sdk: org.freedesktop.Sdk
+id: com.milealan.mepo
+runtime: org.kde.Platform
+runtime-version: "5.15-21.08"
+sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ziglang
 rename-icon: mepo
@@ -14,10 +13,10 @@ finish-args:
   - --socket=wayland
   - --share=network
   - --filesystem=xdg-documents
-
 build-options:
   append-path: /usr/lib/sdk/ziglang
 command: mepo
+
 modules:
   # Core build deps for mepo (note SDL2, SDL2_image, and SDL2_ttf is in runtime)
   - name: SDL2_gfx
@@ -51,14 +50,12 @@ modules:
   #      url: https://gitlab.gnome.org/GNOME/zenity/-/archive/3.43.0/zenity-3.43.0.tar.bz2
   #      sha256: 64c734a98b14fd276c7316596046779d46358bd7fdc07d29302fe3c7d853bdaa
 
-  - name: bemenu
-    buildsystem: simple
-    build-commands:
-      - make install PREFIX=/app
+  - name: kdialog
+    buildsystem: cmake-ninja
     sources:
-      - type: archive
-        url: https://github.com/Cloudef/bemenu/releases/download/0.6.10/bemenu-0.6.10.tar.gz
-        sha256: "9d47557ed4572fa66e6a80364b95e4dd7a588ca75fe89c68c029b7f240b56a60"
+      - type: git
+        url: https://github.com/KDE/kdialog.git
+        tag: v22.08.1
 
 
   - name: oniguruma
