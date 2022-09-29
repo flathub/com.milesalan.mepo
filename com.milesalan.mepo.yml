@@ -81,6 +81,6 @@ modules:
     sources:
       - type: git
         url: https://git.sr.ht/~mil/mepo
-        tag: "1.0_rc1"
+        tag: "1.0"
       - type: file
         path: com.milesalan.mepo.metainfo.xml
