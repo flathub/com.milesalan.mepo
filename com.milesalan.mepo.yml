@@ -1,7 +1,8 @@
-id: com.milealan.mepo
-runtime: org.kde.Platform
-runtime-version: "5.15-21.08"
-sdk: org.kde.Sdk
+# Flatpak Manifest
+app-id: com.milesalan.mepo
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ziglang
 rename-icon: mepo
@@ -13,10 +14,10 @@ finish-args:
   - --socket=wayland
   - --share=network
   - --filesystem=xdg-documents
+
 build-options:
   append-path: /usr/lib/sdk/ziglang
 command: mepo
-
 modules:
   # Core build deps for mepo (note SDL2, SDL2_image, and SDL2_ttf is in runtime)
   - name: SDL2_gfx
@@ -43,20 +44,12 @@ modules:
         url: https://invisible-mirror.net/archives/ncurses/current/ncurses-6.3-20220827.tgz
         sha256: "e9daea489c50be3c325db8d49891e412a75c64aa0cfb3252d0b3d8f02529b748"
 
-  #- name: zenity
-  #  buildsystem: meson
-  #  sources:
-  #    - type: archive
-  #      url: https://gitlab.gnome.org/GNOME/zenity/-/archive/3.43.0/zenity-3.43.0.tar.bz2
-  #      sha256: 64c734a98b14fd276c7316596046779d46358bd7fdc07d29302fe3c7d853bdaa
-
-  - name: kdialog
-    buildsystem: cmake-ninja
+  - name: zenity
+    buildsystem: meson
     sources:
-      - type: git
-        url: https://github.com/KDE/kdialog.git
-        tag: v22.08.1
-
+      - type: archive
+        url: https://gitlab.gnome.org/GNOME/zenity/-/archive/3.43.0/zenity-3.43.0.tar.bz2
+        sha256: 64c734a98b14fd276c7316596046779d46358bd7fdc07d29302fe3c7d853bdaa
 
   - name: oniguruma
     buildsystem: autotools
@@ -85,7 +78,6 @@ modules:
       - install -Dm644 zig-out/share/icons/hicolor/512x512/apps/mepo.png /app/share/icons/hicolor/512x512/apps/mepo.png
       - mkdir -p /app/share/metainfo/
       - install -Dm644 com.milesalan.mepo.metainfo.xml /app/share/metainfo/com.milesalan.mepo.metainfo.xml
-      - gzip /app/share/metainfo/com.milesalan.mepo.metainfo.xml
     sources:
       - type: git
         url: https://git.sr.ht/~mil/mepo
