@@ -1,7 +1,7 @@
 # Flatpak Manifest
 app-id: com.milesalan.mepo
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ziglang
@@ -19,14 +19,6 @@ build-options:
   append-path: /usr/lib/sdk/ziglang
 command: mepo
 modules:
-  # Imagemagick for icon size conversion
-  - name: imagemagick
-    cleanup: '*'
-    sources:
-      - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-47.tar.gz
-        sha256: ad489af583bdfc0b5edd6c2106c955bf3af68fe838f6bd32c0ee8505ec6891ff
-
   # Core build deps for mepo (note SDL2, SDL2_image, and SDL2_ttf is in runtime)
   - name: SDL2_gfx
     buildsystem: autotools
@@ -52,23 +44,12 @@ modules:
         url: https://invisible-mirror.net/archives/ncurses/current/ncurses-6.3-20220827.tgz
         sha256: "e9daea489c50be3c325db8d49891e412a75c64aa0cfb3252d0b3d8f02529b748"
 
-  - name: dmenu
-    buildsystem: simple
-    build-commands:
-      - make install PREFIX=/app
+  - name: zenity
+    buildsystem: meson
     sources:
       - type: archive
-        url: https://dl.suckless.org/tools/dmenu-5.1.tar.gz
-        sha256: "1f4d709ebba37eb7326eba0e665e0f13be4fa24ee35c95b0d79c30f14a348fd5"
-
-  - name: bemenu
-    buildsystem: simple
-    build-commands:
-      - make install PREFIX=/app
-    sources:
-      - type: archive
-        url: https://github.com/Cloudef/bemenu/releases/download/0.6.10/bemenu-0.6.10.tar.gz
-        sha256: "9d47557ed4572fa66e6a80364b95e4dd7a588ca75fe89c68c029b7f240b56a60"
+        url: https://gitlab.gnome.org/GNOME/zenity/-/archive/3.43.0/zenity-3.43.0.tar.bz2
+        sha256: 64c734a98b14fd276c7316596046779d46358bd7fdc07d29302fe3c7d853bdaa
 
   - name: oniguruma
     buildsystem: autotools
@@ -84,15 +65,6 @@ modules:
         url: https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
         sha256: "5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72"
 
-  - name: xdotool
-    buildsystem: simple
-    build-commands:
-      - make install PREFIX=/app
-    sources:
-      - type: archive
-        url: "https://github.com/jordansissel/xdotool/archive/refs/tags/v3.20211022.1.tar.gz"
-        sha256: "82b15a944a5e82fee15e0f6116bd9f642bc3d0bb6989fc0ca5ad9dfe35de0847"
-
   # Build mepo
   - name: Mepo
     buildsystem: simple
@@ -102,13 +74,13 @@ modules:
       - install -Dm644 zig-out/share/applications/mepo.desktop -t /app/share/applications/
       - install -Dm644 zig-out/share/pixmaps/mepo.png -t /app/share/pixmaps/
       - mkdir -p /app/share/icons/hicolor/128x128/apps/ /app/share/icons/hicolor/512x512/apps/
-      - convert zig-out/share/pixmaps/mepo.png -resize 128x128 /app/share/icons/hicolor/128x128/apps/mepo.png
-      - convert zig-out/share/pixmaps/mepo.png -resize 512x512 /app/share/icons/hicolor/512x512/apps/mepo.png
+      - install -Dm644 zig-out/share/icons/hicolor/128x128/apps/mepo.png /app/share/icons/hicolor/128x128/apps/mepo.png
+      - install -Dm644 zig-out/share/icons/hicolor/512x512/apps/mepo.png /app/share/icons/hicolor/512x512/apps/mepo.png
       - mkdir -p /app/share/metainfo/
       - install -Dm644 com.milesalan.mepo.metainfo.xml /app/share/metainfo/com.milesalan.mepo.metainfo.xml
     sources:
       - type: git
         url: https://git.sr.ht/~mil/mepo
-        tag: "0.5"
+        tag: "1.0"
       - type: file
         path: com.milesalan.mepo.metainfo.xml

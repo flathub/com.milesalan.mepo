@@ -16,6 +16,15 @@
     </p>
   </description>
   <releases>
+    <release version="1.0" date="2022-09-29">
+      <description>
+        <p>
+          Rework documentation-related features. Adds support for
+          Plasma Mobile. Flatpak switched to use zenity for menuing
+          by default for all environments.
+        </p>
+      </description>
+    </release>
     <release version="0.5" date="2022-08-15">
       <description>
         <p>
@@ -26,6 +35,14 @@
     </release>
   </releases>
   <screenshots>
+    <screenshot type="default">
+      <image type="source">https://media.lrdu.org/mepo_demos/mepo_demo_1.0_desktop_pois.png</image>
+      <caption>Desktop Points of Interest view</caption>
+    </screenshot>
+    <screenshot type="default">
+      <image type="source">https://media.lrdu.org/mepo_demos/mepo_demo_1.0_desktop_routing.png</image>
+      <caption>Mobile Points of Interest view</caption>
+    </screenshot>
     <screenshot type="default">
       <image type="source">https://media.lrdu.org/mepo_demos/mepo_demo_0.3_pois.png</image>
       <caption>Points of Interest view</caption>
