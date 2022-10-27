@@ -21,7 +21,7 @@
         <p>
           Add support for transferring pins between groups in UI.
           Improve zenity compatbility. Hotkeys for transfering
-          and deleting pins. Minor bug fix including bugfix for
+          and deleting pins. Minor bug fixes including bugfix for
           geolocation centering.
         </p>
       </description>
