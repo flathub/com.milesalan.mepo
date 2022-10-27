@@ -16,6 +16,16 @@
     </p>
   </description>
   <releases>
+    <release version="1.1" date="2022-10-26">
+      <description>
+        <p>
+          Add support for transferring pins between groups in UI.
+          Improve zenity compatbility. Hotkeys for transfering
+          and deleting pins. Minor bug fixes including bugfix for
+          geolocation centering.
+        </p>
+      </description>
+    </release>
     <release version="1.0" date="2022-09-29">
       <description>
         <p>
