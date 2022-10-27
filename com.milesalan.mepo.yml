@@ -51,6 +51,12 @@ modules:
         url: https://gitlab.gnome.org/GNOME/zenity/-/archive/3.43.0/zenity-3.43.0.tar.bz2
         sha256: 64c734a98b14fd276c7316596046779d46358bd7fdc07d29302fe3c7d853bdaa
 
+  - name: xwininfo
+    sources: 
+      - type: archive
+        url: https://xorg.freedesktop.org/archive/individual/app/xwininfo-1.1.5.tar.bz2
+        md5: 26d46f7ef0588d3392da3ad5802be420
+
   - name: oniguruma
     buildsystem: autotools
     sources:
